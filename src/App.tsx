@@ -1,95 +1,38 @@
 import { ChangeEventHandler, FormEvent, FormEventHandler, useRef, useState } from 'react';
 import './App.css';
-import DessertList from './DessertList';
-
-type toDoProps = {
-  id: string;
-  createdAt: string;
-}
-
-const desserts = [
-  {
-    name: "Chocolate Cake",
-    calories: 400,
-    createdAt: "2022-09-01",
-  },
-  {
-    name: "Ice Cream",
-    calories: 200,
-    createdAt: "2022-01-02",
-  },
-  {
-    name: "Tiramisu",
-    calories: 300,
-    createdAt: "2021-10-03",
-  },
-  {
-    name: "Cheesecake",
-    calories: 600,
-    createdAt: "2022-01-04",
-  },
-];
-
-const ToDo = ({ id, createdAt }: toDoProps) => (
-  <tr>
-    <td>
-      <label>{id}</label>
-    </td>
-    <input />
-    <td>
-      <label>{createdAt}</label>
-    </td>
-  </tr>
-);
-
 
 function App() {
 
-  const [todos, setTodos] = useState([
-    {
-      id: "todo1",
-      createdAt: "18:00"
-    },
-    {
-      id: "todo2",
-      createdAt: "20:30"
-    }
-  ])
-
-  const reverseOrder = () => {
-    setTodos([...todos].reverse());
-  }
 
   //get the value of the dom elements
   const inputBox = useRef<HTMLInputElement | null>(null);
 
   //controlled component involves placing it inside form
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("10");
+  //controlled input to validate the length
+  const [comment, setComment] = useState("");
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      console.log("submit file");
+      if(Number(value) <= 5 && comment.length <= 10){
+        alert("Please provide a comment explaining why the experience was poor.");
+        return;
+      }
   }
 
-  const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  }
 
  
   return (
     <div className="App">
-      <h2>List of low calorie desserts:</h2>
-      <button onClick={() => console.log(inputBox.current?.value)}>Reverse</button>
-      
+      <h2>Feedback forms</h2>   
         <form onSubmit={handleSubmit}>
-        <input
-        onChange={onTextChange} ref={inputBox} 
-        />
-        
-        <button
-        
-        disabled={!value}
-        >Submit form</button>
+          <p>Score: {value}  </p>
+          <input type='range' min="0" max="10" value={value} onChange={(e) =>  setValue(e.currentTarget.value)} />
+          <div>
+            <textarea onChange={e => setComment(e.target.value)} value={comment}/>
+          </div>
+
+          <button type='submit'>Submit</button>
         </form>
      </div>
   );
