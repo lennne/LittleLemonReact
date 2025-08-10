@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import './App.css';
 import DessertList from './DessertList';
 
@@ -60,18 +60,19 @@ function App() {
     setTodos([...todos].reverse());
   }
 
+  //get the value of the dom elements
+  const inputBox = useRef<HTMLInputElement | null>(null);
+
+  const handleSubmit = () => {
+    const inputValue = inputBox.current?.value;
+  }
+
   return (
     <div className="App">
       <h2>List of low calorie desserts:</h2>
-      <button onClick={reverseOrder}>Reverse</button>
-      <table>
-        <tbody>
-          {todos.map((todo: toDoProps, index: number) => {
-              return <ToDo id={todo.id} createdAt={todo.createdAt} key={todo.id} />
-          })}
-        </tbody>
-      </table>
-    </div>
+      <button onClick={() => console.log(inputBox.current?.value)}>Reverse</button>
+      <input onChange={() => console.log(inputBox.current?.value)} ref={inputBox}/>
+s    </div>
   );
 }
 
