@@ -1,5 +1,11 @@
+import { useState } from 'react';
 import './App.css';
 import DessertList from './DessertList';
+
+type toDoProps = {
+  id: string;
+  createdAt: string;
+}
 
 const desserts = [
   {
@@ -24,14 +30,47 @@ const desserts = [
   },
 ];
 
+const ToDo = ({id, createdAt}: toDoProps) => (
+  <tr>
+    <td>
+      <label>{id}</label>
+    </td>
+    <input />
+    <td>
+      <label>{createdAt}</label>
+    </td>
+  </tr>
+);
+
 
 function App() {
   
+  const [todos, setTodos] = useState([
+    {
+      id: "todo1",
+      createdAt: "18:00"
+    },
+    {
+      id: "todo2",
+      createdAt: "20:30"
+    }
+  ])
+
+  const reverseOrder = () => {
+    setTodos([...todos].reverse());
+  }
 
   return (
     <div className="App">
       <h2>List of low calorie desserts:</h2>
-      <DessertList data={desserts} />
+      <button onClick={reverseOrder}>Reverse</button>
+      <table>
+        <tbody>
+          {todos.map((todo: toDoProps, index: number) => {
+              return <ToDo id={todo.id} createdAt={todo.createdAt} key={todo.id} />
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
