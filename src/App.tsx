@@ -1,5 +1,6 @@
 import './App.css';
 import EffectScreen from './components/EffectScreen';
+import ReducerScreen from './components/ReducerScreen';
 import WelcomeScreen from './components/welcomeScreen';
 import { ThemeProvider } from './context/ThemeContext';
 
@@ -10,7 +11,7 @@ import { ThemeProvider } from './context/ThemeContext';
  
   return (
     <ThemeProvider>
-      <EffectScreen />
+      <ReducerScreen />
   </ThemeProvider>
   );
 }

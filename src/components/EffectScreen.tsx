@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 
     //in a way, you can provide variables to be tracked for specific values
     //something along the lines of execute this useeffect function(show menu) when this
-    //variable changes
+    //variable changess
     useEffect(()=> {
         alert("i run cause i'm default behaviour")
     })
