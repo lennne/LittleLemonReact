@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 
  const EffectScreen = () => {
+    //the whole premise is that something has to cause a rerender for useffect to
+    //achieve its purpose  
     const [number, setNumber] = useState(0);
     const [renderNumber, setRenderNumber] = useState(0);
-    
+    const version = 0;
     useEffect(()=> {
-        document.title = 'Little Lemon' + number;
+        document.title = 'Little Lemon' + version;
         console.log("i was run");
-    }, [number])
+    }, [version])
 
     //checks if renderNumber satisfies this
     if(renderNumber === 6 ){
@@ -17,7 +19,7 @@ import { useEffect, useState } from "react";
     }
     return(
         <div>
-            <button style={{fontSize: "6px"}} onClick={() => setNumber(number + 1)}>
+            <button style={{fontSize: "6px"}} onClick={() => setNumber(version + 1)}>
 <h1>UseEffect Screen</h1>
 </button>
    <button style={{fontSize: "6px"}} onClick={() => setRenderNumber(renderNumber + 1)}>
