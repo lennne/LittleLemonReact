@@ -6,10 +6,19 @@ import { useEffect, useState } from "react";
     const [number, setNumber] = useState(0);
     const [renderNumber, setRenderNumber] = useState(0);
     const version = 0;
+    //when nothiing is passed within the array, react has nothiing to track 
+    //therefore it is run only once and does not rerender forever
     useEffect(()=> {
-        document.title = 'Little Lemon' + version;
-        console.log("i was run");
-    }, [version])
+        document.title = 'Little Lemon' + number + 1;
+    }, []);
+
+
+    //in a way, you can provide variables to be tracked for specific values
+    //something along the lines of execute this useeffect function(show menu) when this
+    //variable changes
+    useEffect(()=> {
+        alert("i run cause i'm default behaviour")
+    })
 
     //checks if renderNumber satisfies this
     if(renderNumber === 6 ){
@@ -19,7 +28,7 @@ import { useEffect, useState } from "react";
     }
     return(
         <div>
-            <button style={{fontSize: "6px"}} onClick={() => setNumber(version + 1)}>
+            <button style={{fontSize: "6px"}} onClick={() => setNumber(number + 1)}>
 <h1>UseEffect Screen</h1>
 </button>
    <button style={{fontSize: "6px"}} onClick={() => setRenderNumber(renderNumber + 1)}>
