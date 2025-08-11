@@ -7,7 +7,7 @@ type ThemeProviderProps = {
 
 const ThemeContext = createContext<any>(undefined);
 
-export const ThemeProvider = ({children}: {children: ReactNode}) => {
+export const ThemeProvider = ({children}: {children:ReactNode}) => {
     const [themeObject, setThemeObject] = useState("light")
 
     return  (
