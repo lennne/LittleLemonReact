@@ -8,8 +8,11 @@ import { useEffect, useState } from "react";
         document.title = 'Little Lemon' + number;
         console.log("i was run");
     }, [number])
+
+    //checks if renderNumber satisfies this
     if(renderNumber === 6 ){
         setNumber(number + 1);
+        //changes the render number to prevent condition from running anymore
         setRenderNumber(renderNumber + 1);
     }
     return(
