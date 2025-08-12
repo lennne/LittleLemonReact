@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import LiveOrders from "./LiveOrders";
 import { DataSource } from "../../services/DataSource";
+import { Order } from "../types/orders";
 
 const LiveOrdersList = () => {
 
-    const [orders, setOrders] = useState<any[]>([]);
+    const [orders, setOrders] = useState<Order[]>([]);
 
     useEffect(() => {
         const handleNewOrders = () => {

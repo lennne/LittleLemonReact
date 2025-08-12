@@ -1,8 +1,5 @@
-type Order = {
-    id: number;
-    item: string;
-    quantity: number;
-}
+import { Order } from "../components/types/orders";
+
 
 let orders: Order[] = [
     {id: 1, item: "Burger", quantity: 2},
